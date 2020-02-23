@@ -5,6 +5,9 @@ import java.util.Scanner;
 		static int arrays1[];
 		static int arrays2[];
 		static int arrays3[];
+		static int opt;
+		static Scanner scan;
+
 
 		
 		public static void desMenu1(){
@@ -38,23 +41,25 @@ import java.util.Scanner;
 			System.out.println("(9).Desplegar en pantalla los tres arreglos ingresados.");			
 			System.out.println("(10).Indicar el valor promedio de los valores ingresados,");
 			System.out.println("(11).Indique el mayor valor de los valores ingresados al arreglo");
-			System.out.println("(12).");
+			System.out.println("(12).Generar un nuevo arreglo con una ((1).suma, (2).resta, (3).multiplicacion, (4).division)");
+			//no entiendo el punto 12
 
 		}
 
 		public static void main(String[] args){
 			
-			Scanner scan = new Scanner(System.in);
+			scan = new Scanner(System.in);
 			
 			desMenu1();
 			
-			int opt = scan.nextInt();
+			opt = scan.nextInt();
 			scan.nextLine();
 			
 			String[] cadena = new String[3];
 			
 			switch(opt){
 
+				//para la opcion 1
 
 				case 1:
 
@@ -86,13 +91,29 @@ import java.util.Scanner;
 						
 						System.out.println("Las palabras ingresadas en oracion es: " +cadena[0] +" "+cadena[1] +" "+cadena[2]);
 						
+					} else {
+
+						System.out.println("Ingrese una posicion");
+						int posicion = scan.nextInt();
+
+						posicion--;
+
+						if(posicion>cadena[0].length() && posicion> cadena[1].length() && posicion> cadena[2].length()){
+
+							System.out.println("la posicion ingresada es mayor a la cadena");
+
+						}else {
+
+							System.out.println(cadena[0].charAt(posicion)+ "\n" + cadena[1].charAt(posicion) +"\n" + cadena[2].charAt(posicion));
+						}
+
 					}
 					
-					// falta hacer el punto 5 
+					
 
 				break;
 				
-				
+				//para la opcion 2
 
 				case 2:
 
@@ -126,6 +147,7 @@ import java.util.Scanner;
 					
 				break;
 				
+				//para la opcion 3
 				case 3:
 
 					// se crean tres arreglos de tipo int y el usuario ingresa el tamaño de cada uno
@@ -150,7 +172,7 @@ import java.util.Scanner;
 
 					System.out.println("ingrese los valores que desea que contenga el segundo arreglo");
 
-					for(int i=0; i<arrays1.length; i++){
+					for(int i=0; i<arrays2.length; i++){
 
 						arrays2[i]= scan.nextInt();
 
@@ -161,7 +183,7 @@ import java.util.Scanner;
 
 					System.out.println("ingrese los valores que desea que contenga el tercer arreglo");
 
-					for(int i=0; i<arrays1.length; i++){
+					for(int i=0; i<arrays3.length; i++){
 
 						arrays3[i]= scan.nextInt();
 
@@ -174,31 +196,30 @@ import java.util.Scanner;
 
 					// se realizan las operaciones escogidas por el usuruario del sub menu C
 
-					if(opt==9){
+					if(opt==9){//despliegue de arreglos
 
 						desArreglos(arrays1, arrays2, arrays3);
 
+					} else if(opt==10){//promedio de los valores que se encuentran  en el arreglo escogido por el usuario)
+
+						System.out.println("el promedio es: " + promedioDeUnArreglo(arrays1, arrays2, arrays3));
+
+					} else {//(indica el numero mayor que se encuentra en el arreglo escogido por el usuario)
+
+						System.out.println("El numero mayor es: " + el_mayor(arrays1, arrays2, arrays3));
 
 					}
 
 
-
-
-
 					System.out.println("Finished");	
-
 
 				break;
 				
-				
-			
-				
 			}
-			
-
 			
 		}
 
+		//---------------------------------------------------------------------------------------------------------------------------//
 		//metodos para realizar las operaciones del sub menu B de la opcion numero #2
 		public static double division(double num1, double num2){
 
@@ -212,7 +233,9 @@ import java.util.Scanner;
 
 		}
 
-		// metodos para realizar las operaciones del sub menu C de la opcion #3
+		//---------------------------------------------------------------------------------------------------------------------------//
+
+		// metodos para realizar el despliegue de los arreglos del sub menu C de la opcion #3
 
 		public static void desArreglos(int[] arrays1, int[] arrays2, int[] arrays3){
 
@@ -231,6 +254,7 @@ import java.util.Scanner;
 				System.out.println( arrays2[i]);
 
 			}
+
 			System.out.println("el arreglo 3 tiene:");
 
 			for(int i=0; i<arrays3.length; i++){
@@ -240,7 +264,123 @@ import java.util.Scanner;
 			}
 
 		}
-	
+
+		//---------------------------------------------------------------------------------------------------------------------------//
+
+		//metodo para realizar un promedio de los valores ingresados en el arreglo escogido por el usuario
+
+		public static double promedioDeUnArreglo(int[] arrays1, int[] arrays2, int[] arrays3){
+
+			System.out.println("Ingrese el numero del arreglo con el que desea trabajar, \n (1). arreglo #1 \n (2). arreglo #2 \n (3). arreglo #3");
+			opt= scan.nextInt();
+
+			int suma=0;
+			double result=0;
+
+			//para la opcion 1
+			if(opt==1){
+
+				for(int i=0; i<arrays1.length; i++){
+
+					suma += arrays1[i]; 
+					result= suma/arrays1.length;
+
+				}
+
+			}else if(opt==2){
+
+				for(int i=0; i<arrays2.length; i++){
+
+					suma += arrays2[i]; 
+					result= suma/arrays2.length;
+
+				}
+
+			}else {
+
+				for(int i=0; i<arrays3.length; i++){
+
+					suma += arrays3[i];
+					result= suma/arrays3.length; 
+
+				}				
+
+			}
+
+			return result;
+
+		}
+		//--------------------------------------------------------------------------------------------------------------------------//
+
+		//metodo que realiza la operacion para escoger el numero mayor que se encuentra en el arreglo que escoge el usuario
+
+		public static int el_mayor(int[] arrays1, int[] arrays2, int[] arrays3){
+
+			System.out.println("Ingrese el numero del arreglo con el que desea trabajar, \n (1). arreglo #1 \n (2). arreglo #2 \n (3). arreglo #3");
+			opt= scan.nextInt();
+			int elMayor=0;
+
+			//para el arreglo 1
+			if(opt==1){
+
+				for(int i=0; i<arrays1.length; i++){
+
+					for(int j=0; j<arrays1.length; j++){
+
+						if(arrays1[i]>arrays1[j]){
+
+							elMayor= arrays1[i];
+
+						}
+					}
+
+				}
+
+			}
+
+			//para el arreglo 2
+
+			if(opt==2){
+
+				for(int i=0; i<arrays2.length; i++){
+
+					for(int j=0; j<arrays1.length; j++){
+
+						if(arrays2[i]>arrays1[j]){
+
+							elMayor= arrays2[i];
+
+						}
+					}
+
+				}
+
+			}
+
+			//para el arreglo 3
+
+			if(opt==3){
+
+				for(int i=0; i<arrays3.length; i++){
+
+					for(int j=0; j<arrays3.length; j++){
+
+						if(arrays3[i]>arrays3[j]){
+
+							elMayor= arrays3[i];
+
+						}
+					}
+
+				}
+
+			}
+
+			return elMayor;
+
+			//
+		}
+		//--------------------------------------------------------------------------------------------------------------------------//
 
 
 	

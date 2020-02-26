@@ -1,14 +1,40 @@
 import java.util.Scanner;
 
 	public class Menu{
+		//-----------------MENU------------------//
+		public final static int ADD_STRING = 1;
+		public final static int REAL_NUMBERS = 2;
+		public final static int ARRAYS = 3;
 
-		static int arrays1[];
-		static int arrays2[];
-		static int arrays3[];
-		static int opt;
-		static Scanner scan;
+		//-------------SUB MENU A--------------------//
+		public final static int LENGTH_STRING = 4;
+		public final static int CONCATENATE_STRING = 5;
+		public final static int SEE_CHAR = 6;
 
+		//-------------SUB MENU B--------------------//
+		public final static int DIVISION = 7;
+		public final static int RESIDUE = 8;
 
+		//-------------SUB MENU C------------------//
+		public final static int SEE_ARRAYS= 9;
+		public final static int AVERAGE = 10;
+		public final static int BIGGER = 11;
+		public final static int NEW_ARRAY = 12;
+
+		//-------------SUB MENU D-----------------//
+
+		public final static int SUM = 1;
+		public final static int SUUBTRACTION = 2;
+		public final static int MULTIPLY = 3;
+
+		//-------------------------------------------//
+		private static int[] arrays1;
+		private static int[] arrays2;
+		private static int[] arrays3;
+		private static int opt;
+		private static Scanner scan;
+
+		//_______________________________________________________MENU____________________________________________________________//
 		
 		public static void desMenu1(){
 			
@@ -41,10 +67,11 @@ import java.util.Scanner;
 			System.out.println("(9).Desplegar en pantalla los tres arreglos ingresados.");			
 			System.out.println("(10).Indicar el valor promedio de los valores ingresados,");
 			System.out.println("(11).Indique el mayor valor de los valores ingresados al arreglo");
-			System.out.println("(12).Generar un nuevo arreglo con una ((1).suma, (2).resta, (3).multiplicacion, (4).division)");
-			//no entiendo el punto 12
+			System.out.println("(12).Generar un nuevo arreglo con una ((1).suma, (2).resta, (3).multiplicacion, (7).division)");
 
 		}
+
+		//________________________________________________________MAIN__________________________________________________________//
 
 		public static void main(String[] args){
 			
@@ -61,7 +88,7 @@ import java.util.Scanner;
 
 				//para la opcion 1
 
-				case 1:
+				case ADD_STRING: //HACER DENTRO DE UN METODO//
 
 					// se crean los arreglos de tipo String
 
@@ -81,13 +108,13 @@ import java.util.Scanner;
 
 					// se realizan las opciones escogidas por el usuario
 					
-					if(opt==4){
+					if(opt==LENGTH_STRING){
 						
 						System.out.println("la longitud de la primera cadena es: " + cadena[0].length());
 						System.out.println("la longitud de la segunda cadena es: " + cadena[1].length());	
 						System.out.println("la longitud de la tercera cadena es: " + cadena[2].length());						
 						
-					} else if(opt==5){
+					} else if(opt==CONCATENATE_STRING){
 						
 						System.out.println("Las palabras ingresadas en oracion es: " +cadena[0] +" "+cadena[1] +" "+cadena[2]);
 						
@@ -115,7 +142,7 @@ import java.util.Scanner;
 				
 				//para la opcion 2
 
-				case 2:
+				case REAL_NUMBERS:
 
 					// se ingresan dos numeros reales para realizar una division
 
@@ -132,11 +159,11 @@ import java.util.Scanner;
 
 					// se realizan las operaciones escogidas por el usuario
 					
-					if(opt==7){
+					if(opt== DIVISION){
 						
 						System.out.println(division(num1,num2));						
 						
-					} else if(opt==8){
+					} else if(opt==RESIDUE){
 						
 						System.out.println("la division es: " + division(num1,num2) + "\n el residuo es: " + modulo(num1,num2));
 						
@@ -148,7 +175,7 @@ import java.util.Scanner;
 				break;
 				
 				//para la opcion 3
-				case 3:
+				case ARRAYS:
 
 					// se crean tres arreglos de tipo int y el usuario ingresa el tamaño de cada uno
 					// en el for el usuario ingresa los valores para almacenar en cada arreglos
@@ -196,11 +223,11 @@ import java.util.Scanner;
 
 					// se realizan las operaciones escogidas por el usuruario del sub menu C
 
-					if(opt==9){//despliegue de arreglos
+					if(opt==SEE_ARRAYS){//despliegue de arreglos
 
 						desArreglos(arrays1, arrays2, arrays3);
 
-					} else if(opt==10){//promedio de los valores que se encuentran  en el arreglo escogido por el usuario)
+					} else if(opt==AVERAGE){//promedio de los valores que se encuentran  en el arreglo escogido por el usuario)
 
 						System.out.println("el promedio es: " + promedioDeUnArreglo(arrays1, arrays2, arrays3));
 
@@ -219,7 +246,8 @@ import java.util.Scanner;
 			
 		}
 
-		//---------------------------------------------------------------------------------------------------------------------------//
+		//----------------------------------------------------------METODO DIVISION 2--------------------------------------------------//
+
 		//metodos para realizar las operaciones del sub menu B de la opcion numero #2
 		public static double division(double num1, double num2){
 
@@ -233,7 +261,7 @@ import java.util.Scanner;
 
 		}
 
-		//---------------------------------------------------------------------------------------------------------------------------//
+		//----------------------------------------------------------METODO ARREGLOS 3----------------------------------------------------//
 
 		// metodos para realizar el despliegue de los arreglos del sub menu C de la opcion #3
 
@@ -265,7 +293,7 @@ import java.util.Scanner;
 
 		}
 
-		//---------------------------------------------------------------------------------------------------------------------------//
+		//----------------------------------------------------------------METODO PROMEDIO---------------------------------------------//
 
 		//metodo para realizar un promedio de los valores ingresados en el arreglo escogido por el usuario
 
@@ -310,7 +338,7 @@ import java.util.Scanner;
 			return result;
 
 		}
-		//--------------------------------------------------------------------------------------------------------------------------//
+		//--------------------------------------------------------------METODO EL MAYOR----------------------------------------------//
 
 		//metodo que realiza la operacion para escoger el numero mayor que se encuentra en el arreglo que escoge el usuario
 

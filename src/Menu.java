@@ -33,6 +33,7 @@ import java.util.Scanner;
 		private static int[] arrays3;
 		private static int opt;
 		private static Scanner scan;
+		private static String[] string; 
 
 		//_______________________________________________________MENU____________________________________________________________//
 		
@@ -82,60 +83,15 @@ import java.util.Scanner;
 			opt = scan.nextInt();
 			scan.nextLine();
 			
-			String[] cadena = new String[3];
+			
 			
 			switch(opt){
 
 				//para la opcion 1
 
 				case ADD_STRING: //HACER DENTRO DE UN METODO//
-
-					// se crean los arreglos de tipo String
-
-					System.out.println("primera palabra");
-					cadena[0] = scan.nextLine();
 					
-					System.out.println("segunda palabra");				
-					cadena[1] = scan.nextLine();
-					
-					System.out.println("tercera palabra");		
-					cadena[2] = scan.nextLine();
-					
-					// se despliega el sub menu A de la opcion #1
-
-					desSubMenuA();
-					opt = scan.nextInt();
-
-					// se realizan las opciones escogidas por el usuario
-					
-					if(opt==LENGTH_STRING){
-						
-						System.out.println("la longitud de la primera cadena es: " + cadena[0].length());
-						System.out.println("la longitud de la segunda cadena es: " + cadena[1].length());	
-						System.out.println("la longitud de la tercera cadena es: " + cadena[2].length());						
-						
-					} else if(opt==CONCATENATE_STRING){
-						
-						System.out.println("Las palabras ingresadas en oracion es: " +cadena[0] +" "+cadena[1] +" "+cadena[2]);
-						
-					} else {
-
-						System.out.println("Ingrese una posicion");
-						int posicion = scan.nextInt();
-
-						posicion--;
-
-						if(posicion>cadena[0].length() && posicion> cadena[1].length() && posicion> cadena[2].length()){
-
-							System.out.println("la posicion ingresada es mayor a la cadena");
-
-						}else {
-
-							System.out.println(cadena[0].charAt(posicion)+ "\n" + cadena[1].charAt(posicion) +"\n" + cadena[2].charAt(posicion));
-						}
-
-					}
-					
+					strings();
 					
 
 				break;
@@ -244,6 +200,61 @@ import java.util.Scanner;
 				
 			}
 			
+		}
+
+		public static void strings(){
+
+			// se crean los arreglos de tipo String
+
+			string = new String[3];
+
+			System.out.println("primera palabra");
+			string[0] = scan.nextLine();
+					
+			System.out.println("segunda palabra");				
+			string[1] = scan.nextLine();
+					
+			System.out.println("tercera palabra");		
+			string[2] = scan.nextLine();
+					
+			// se despliega el sub menu A de la opcion #1
+
+			desSubMenuA();
+			opt = scan.nextInt();
+
+			// se realizan las opciones escogidas por el usuario
+					
+
+			
+
+			if(opt==LENGTH_STRING){
+						
+						System.out.println("la longitud de la primera cadena es: " + string[0].length());
+						System.out.println("la longitud de la segunda cadena es: " + string[1].length());	
+						System.out.println("la longitud de la tercera cadena es: " + string[2].length());						
+						
+					} else if(opt==CONCATENATE_STRING){
+						
+						System.out.println("Las palabras ingresadas en oracion es: " +string[0] +" "+string[1] +" "+string[2]);
+						
+					} else {
+
+						System.out.println("Ingrese una posicion");
+						int position = scan.nextInt();
+
+						position--;
+
+						if(position>string[0].length() && position> string[1].length() && position> string[2].length()){
+
+							System.out.println("la posicion ingresada es mayor a la cadena");
+
+						}else {
+
+							System.out.println(string[0].charAt(position)+ "\n" + string[1].charAt(position) +"\n" + string[2].charAt(position));
+						}
+
+					}
+
 		}
 
 		//----------------------------------------------------------METODO DIVISION 2--------------------------------------------------//

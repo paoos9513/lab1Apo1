@@ -20,13 +20,19 @@ import java.util.Scanner;
 		public final static int AVERAGE = 10;
 		public final static int BIGGER = 11;
 		public final static int NEW_ARRAY = 12;
+		public final static int NEW_ARRAY_UNION_REPEAT = 13;
+		public final static int NEW_ARRAY_NUMBERS_DIFF = 14;
+		public final static int NEW_ARRAY_NUMBERS_EQUALS = 15;
+		public final static int TURN_POSITIONS=16;
+		public final static int ORDER_MINOR=17;
+
 
 		//-------------SUB MENU D-----------------//
 
-		public final static int SUM = 13;
-		public final static int SUSBTRACTION = 14;
-		public final static int MULTIPLY = 15;
-
+		public final static int SUM = 1;
+		public final static int SUSBTRACTION = 2;
+		public final static int MULTIPLY = 3;
+		
 		//-------------------------------------------//
 		private static int[] array;
 		private static int[] arrays1;
@@ -67,19 +73,25 @@ import java.util.Scanner;
 
 			System.out.println("------SUB MENU 3------ \n Ingrese la opcion de desea realizar con los numeros ingresadas:");		
 			System.out.println("(9).Desplegar en pantalla los tres arreglos ingresados.");			
-			System.out.println("(10).Indicar el valor promedio de los valores ingresados,");
+			System.out.println("(10).Indicar el valor promedio de los valores ingresados");
 			System.out.println("(11).Indique el mayor valor de los valores ingresados al arreglo");
-			System.out.println("(12).Generar un nuevo arreglo con una (suma, resta y multiplicacion)");
+			System.out.println("(12).Generar un nuevo arreglo con diferentes operaciones(suma, resta o multiplicacion)");
+			System.out.println("(13).Generar un nuevo arreglo con la union de los tres arreglos ingresados");
+			System.out.println("(14).Generar un nuevo arreglo con la union de los tres arreglos ingresados");
+			System.out.println("(15).Generar un nuevo arreglo con la intercepcion de los tres arreglos ingresados");
+			System.out.println("(16).Girar n posiciones, los valores del arreglo, utilizando uno de los tres arreglos ingresados");
+			System.out.println("(17).Ordene de menor a mayor los valores del arreglo");
 
 		}
 		
 		public static void desSubMenuD(){
 
 			System.out.println("------SUB MENU 4 C------ \n Ingrese la opcion de desea realizar con los arreglos:");		
-			System.out.println("(13).Suma");			
-			System.out.println("(14).Resta");
-			System.out.println("(15).Multiplicacion");
+			System.out.println("(1).Suma");			
+			System.out.println("(2).Resta");
+			System.out.println("(3).Multiplicacion");
 		}
+
 
 		//________________________________________________________MAIN__________________________________________________________//
 
@@ -213,12 +225,28 @@ import java.util.Scanner;
 						}else if(opt==MULTIPLY){
 
 							multiply_arrays();
-
 						}else{
 
 							System.out.println("la opcion es invalida");
-						}
-						
+
+						}	
+
+					}else if(opt==NEW_ARRAY_UNION_REPEAT){
+
+						arraysJoined();
+					}else if(opt==NEW_ARRAY_NUMBERS_DIFF){
+
+						arraydiff();
+
+					}else if(opt==NEW_ARRAY_NUMBERS_EQUALS){
+
+
+					}else if(opt==TURN_POSITIONS){
+
+
+					}else if(opt==ORDER_MINOR){
+
+
 					}else{
 
 						System.out.println("la opcion es invalida");
@@ -228,8 +256,8 @@ import java.util.Scanner;
 
 				break;
 			}	
+		
 		}
-
 		public static void strings(){
 
 			// se crean los arreglos de tipo String
@@ -487,6 +515,7 @@ import java.util.Scanner;
 				
 				System.out.println("los dos arreglos no tienen elmismo tamaño");
 			}	
+		}
 
 		//---------------------------------------------------------------MULTIPLIICACION------------------------------------------------------------------//
 
@@ -538,5 +567,51 @@ import java.util.Scanner;
 
 			}
 		}
+
+		//Metodo que genera un nuevo arreglo con los tres arreglos ingresado sin elementos repetidos
+
+		public static void arraydiff(){
+
+			int[] arrayJoined = new int[arrays1.length+arrays2.length+arrays3.length];
+			int[] arrayDiff= new int[arrayJoined.length];
+			int counter=0;
+			boolean isEqual = false;
+
+			for(int i=0; i<arrays1.length; i++){
+
+				arrayJoined[i] = arrays1[i];
+				arrayJoined[arrays2.length+i] = arrays2[i];
+				arrayJoined[arrays2.length+arrays3.length+i] = arrays3[i];
+			}
+
+			for(int i= 0; i<arrayJoined.length; i++ ){
+
+				isEqual = false;
+
+				for(int j=0; j<arrayJoined.length; j++){
+
+					if(arrayJoined[i]==arrayDiff[j]){
+
+						isEqual = true;
+
+						break;
+
+					}
+
+				}
+				
+				if (isEqual==false){
+
+					arrayDiff[counter]=arrayJoined[i];
+
+					System.out.println(arrayDiff[counter]);
+
+					counter++;
+
+				}
+
+			}
+		}
+
+}
 	
-	}

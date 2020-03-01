@@ -246,7 +246,8 @@ import java.util.Scanner;
 
 
 					}else if(opt==ORDER_MINOR){
-
+						
+						burbuja();
 
 					}else{
 

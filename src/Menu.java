@@ -23,11 +23,12 @@ import java.util.Scanner;
 
 		//-------------SUB MENU D-----------------//
 
-		public final static int SUM = 1;
-		public final static int SUUBTRACTION = 2;
-		public final static int MULTIPLY = 3;
+		public final static int SUM = 13;
+		public final static int SUUBTRACTION = 14;
+		public final static int MULTIPLY = 15;
 
 		//-------------------------------------------//
+		private static int[] array;
 		private static int[] arrays1;
 		private static int[] arrays2;
 		private static int[] arrays3;
@@ -35,7 +36,7 @@ import java.util.Scanner;
 		private static Scanner scan;
 		private static String[] string; 
 
-		//_______________________________________________________MENU____________________________________________________________//
+		//_______________________________________________________MENU___________________________________________________________//
 		
 		public static void desMenu1(){
 			
@@ -68,8 +69,16 @@ import java.util.Scanner;
 			System.out.println("(9).Desplegar en pantalla los tres arreglos ingresados.");			
 			System.out.println("(10).Indicar el valor promedio de los valores ingresados,");
 			System.out.println("(11).Indique el mayor valor de los valores ingresados al arreglo");
-			System.out.println("(12).Generar un nuevo arreglo con una ((1).suma, (2).resta, (3).multiplicacion, (7).division)");
+			System.out.println("(12).Generar un nuevo arreglo con una (suma, resta y multiplicacion)");
 
+		}
+		
+		public static void desSubMenuD(){
+
+			System.out.println("------SUB MENU 4 C------ \n Ingrese la opcion de desea realizar con los arreglos:");		
+			System.out.println("(13).Suma");			
+			System.out.println("(14).Resta");
+			System.out.println("(15).Multiplicacion");
 		}
 
 		//________________________________________________________MAIN__________________________________________________________//
@@ -82,8 +91,6 @@ import java.util.Scanner;
 			
 			opt = scan.nextInt();
 			scan.nextLine();
-			
-			
 			
 			switch(opt){
 
@@ -136,7 +143,7 @@ import java.util.Scanner;
 					// se crean tres arreglos de tipo int y el usuario ingresa el tamaño de cada uno
 					// en el for el usuario ingresa los valores para almacenar en cada arreglos
 
-					System.out.println("ingrese el tamaño del primer arreglo");
+					System.out.println("ingrese el tamaño del primer arreglo" + "\n recuerda que si deseas operar los arreglos entre si, deben tener el mismo tamaño");
 					arrays1 = new int[scan.nextInt()];
 
 
@@ -181,25 +188,33 @@ import java.util.Scanner;
 
 					if(opt==SEE_ARRAYS){//despliegue de arreglos
 
-						desArreglos(arrays1, arrays2, arrays3);
+						desArreglos();
 
 					} else if(opt==AVERAGE){//promedio de los valores que se encuentran  en el arreglo escogido por el usuario)
 
-						System.out.println("el promedio es: " + promedioDeUnArreglo(arrays1, arrays2, arrays3));
+						System.out.println("el promedio es: " + promedioDeUnArreglo());
 
-					} else {//(indica el numero mayor que se encuentra en el arreglo escogido por el usuario)
+					} else if (opt==BIGGER) {//(indica el numero mayor que se encuentra en el arreglo escogido por el usuario)
 
-						System.out.println("El numero mayor es: " + el_mayor(arrays1, arrays2, arrays3));
+						System.out.println("El numero mayor es: " + el_mayor());
 
+					}else if (opt==NEW_ARRAY){
+						
+						desSubMenuD();
+						opt = scan.nextInt();
+						
+						System.out.println("mi opt es:" + opt + " y mi sum es :" + SUM);
+						if(opt==SUM){
+							
+							sum();	
+						}
+						
 					}
-
-
+					
 					System.out.println("Finished");	
 
 				break;
-				
-			}
-			
+			}	
 		}
 
 		public static void strings(){
@@ -224,8 +239,6 @@ import java.util.Scanner;
 
 			// se realizan las opciones escogidas por el usuario
 					
-
-			
 
 			if(opt==LENGTH_STRING){
 						
@@ -252,9 +265,7 @@ import java.util.Scanner;
 
 							System.out.println(string[0].charAt(position)+ "\n" + string[1].charAt(position) +"\n" + string[2].charAt(position));
 						}
-
 					}
-
 		}
 
 		//----------------------------------------------------------METODO DIVISION 2--------------------------------------------------//
@@ -276,14 +287,13 @@ import java.util.Scanner;
 
 		// metodos para realizar el despliegue de los arreglos del sub menu C de la opcion #3
 
-		public static void desArreglos(int[] arrays1, int[] arrays2, int[] arrays3){
+		public static void desArreglos(){
 
 			System.out.println("el arreglo 1 tiene:");
 
 			for(int i=0; i<arrays1.length; i++){
 
 				System.out.println(arrays1[i]);
-
 			}
 
 			System.out.println("el arreglo 2 tiene:");
@@ -299,16 +309,14 @@ import java.util.Scanner;
 			for(int i=0; i<arrays3.length; i++){
 
 				System.out.println(arrays3[i]);
-
 			}
-
 		}
 
 		//----------------------------------------------------------------METODO PROMEDIO---------------------------------------------//
 
 		//metodo para realizar un promedio de los valores ingresados en el arreglo escogido por el usuario
 
-		public static double promedioDeUnArreglo(int[] arrays1, int[] arrays2, int[] arrays3){
+		public static double promedioDeUnArreglo(){
 
 			System.out.println("Ingrese el numero del arreglo con el que desea trabajar, \n (1). arreglo #1 \n (2). arreglo #2 \n (3). arreglo #3");
 			opt= scan.nextInt();
@@ -323,7 +331,6 @@ import java.util.Scanner;
 
 					suma += arrays1[i]; 
 					result= suma/arrays1.length;
-
 				}
 
 			}else if(opt==2){
@@ -343,17 +350,14 @@ import java.util.Scanner;
 					result= suma/arrays3.length; 
 
 				}				
-
 			}
-
 			return result;
-
 		}
 		//--------------------------------------------------------------METODO EL MAYOR----------------------------------------------//
 
 		//metodo que realiza la operacion para escoger el numero mayor que se encuentra en el arreglo que escoge el usuario
 
-		public static int el_mayor(int[] arrays1, int[] arrays2, int[] arrays3){
+		public static int el_mayor(){
 
 			System.out.println("Ingrese el numero del arreglo con el que desea trabajar, \n (1). arreglo #1 \n (2). arreglo #2 \n (3). arreglo #3");
 			opt= scan.nextInt();
@@ -372,9 +376,7 @@ import java.util.Scanner;
 
 						}
 					}
-
 				}
-
 			}
 
 			//para el arreglo 2
@@ -391,9 +393,7 @@ import java.util.Scanner;
 
 						}
 					}
-
 				}
-
 			}
 
 			//para el arreglo 3
@@ -410,17 +410,55 @@ import java.util.Scanner;
 
 						}
 					}
-
 				}
-
 			}
 
 			return elMayor;
-
-			//
+			
 		}
-		//--------------------------------------------------------------------------------------------------------------------------//
+		//------------------------------------------------------------------SUB MENU CA--------------------------------------------------------------//
 
+		public static void sum(){
+			
+			System.out.println("entro al metodo");
+			
+			int[] sumArrays;
+			int[][] array = {arrays1,arrays2,arrays3};
+			
+			System.out.println("seleccione el primer arreglo que desea sumar");
+			int opt1 = scan.nextInt()-1;
+			
+			System.out.println(opt1);
+			System.out.println("seleccione el segundo arreglo que desea sumar");
+			int opt2 = scan.nextInt()-1;			
+			System.out.println(opt2);
+			if(array[opt1].length==array[opt2].length){
+				
+				System.out.println("entro al metodo");
+				
+				sumArrays = new int[array[opt1].length];
+				
+				System.out.println("entro al metodo");
+				
+				for(int i=0; i<array.length ; i++){
+					
+					System.out.println("entro al metodo");
+					
+					sumArrays[i] = array[opt1][i] + array[opt2][i];
+					
+					System.out.println(sumArrays[i]);
+				}
+				
+			}else{
+				
+				System.out.println("los dos arreglos no tienen elmismo tamaño");
+			}
+			
+			
+			//return sumArrays;
+			
 
+			
+		}
 	
 	}

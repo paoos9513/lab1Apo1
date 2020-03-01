@@ -76,9 +76,9 @@ import java.util.Scanner;
 			System.out.println("(10).Indicar el valor promedio de los valores ingresados");
 			System.out.println("(11).Indique el mayor valor de los valores ingresados al arreglo");
 			System.out.println("(12).Generar un nuevo arreglo con diferentes operaciones(suma, resta o multiplicacion)");
-			System.out.println("(13).Generar un nuevo arreglo con la union de los tres arreglos ingresados");
-			System.out.println("(14).Generar un nuevo arreglo con la union de los tres arreglos ingresados");
-			System.out.println("(15).Generar un nuevo arreglo con la intercepcion de los tres arreglos ingresados");
+			System.out.println("(13).Generar un nuevo arreglo con la union de los tres arreglos ingresados (con elementos repetidos)");
+			System.out.println("(14).Generar un nuevo arreglo con la union de los tres arreglos ingresados(sin elementos repetidos)");
+			System.out.println("(15).Generar un nuevo arreglo con la intercepcion de los tres arreglos ingresados (elementos repetidos)");
 			System.out.println("(16).Girar n posiciones, los valores del arreglo, utilizando uno de los tres arreglos ingresados");
 			System.out.println("(17).Ordene de menor a mayor los valores del arreglo");
 
@@ -240,6 +240,7 @@ import java.util.Scanner;
 
 					}else if(opt==NEW_ARRAY_NUMBERS_EQUALS){
 
+						arrayEquals();
 
 					}else if(opt==TURN_POSITIONS){
 
@@ -609,8 +610,123 @@ import java.util.Scanner;
 					counter++;
 
 				}
+			}
+
+		}
+
+		//Metodo que crea un arreglo con la union de los tres arreglos anteriores y agrega sus valores repetidos
+		public static void arrayEquals(){
+
+			int[] arrayJoined = new int[arrays1.length+arrays2.length+arrays3.length];
+			int[] arrayequal= new int[arrayJoined.length];
+			int counter=0;
+			boolean isEqual = false;
+
+			for(int i=0; i<arrays1.length; i++){
+
+				arrayJoined[i] = arrays1[i];
+				arrayJoined[arrays2.length+i] = arrays2[i];
+				arrayJoined[arrays2.length+arrays3.length+i] = arrays3[i];
+			}
+
+			for(int i= 0; i<arrayJoined.length; i++ ){
+
+				isEqual = false;
+
+				for(int j=0; j<arrayJoined.length; j++){
+
+					if(arrayJoined[i]!=arrayequal[j]){
+
+						isEqual = true;
+
+						break;
+
+					}
+
+				}
+				
+				if (isEqual==true){
+
+					arrayequal[counter]=arrayJoined[i];
+
+					System.out.println(arrayequal[counter]);
+
+					counter++;
+
+				}
+
 
 			}
+		}
+
+		//METODO BURBUJA
+
+		public static void burbuja(){
+
+        		int i,j,aux;
+
+        		System.out.println("Ingrese el arreglo que desea ordenar");
+        		opt=scan.nextInt();
+
+    		switch(opt){
+    			case 1:
+
+    			    for (i = 0; i < arrays1.length - 1; i++) {
+
+           	 			for (j = 0; j < arrays1.length - i - 1; j++) {
+
+                			if (arrays1[j + 1] < arrays1[j]) {
+
+                    		aux = arrays1[j + 1];
+
+                   		 arrays1[j + 1] = arrays1[j];
+
+                   		 arrays1[j] = aux;
+               	 	}
+            	}
+        	}
+
+    			break;
+
+        		case 2:
+        			for (i = 0; i < arrays2.length - 1; i++) {
+
+           	 			for (j = 0; j < arrays2.length - i - 1; j++) {
+
+                			if (arrays2[j + 1] < arrays2[j]) {
+
+                    		aux = arrays2[j + 1];
+
+                    		arrays2[j + 1] = arrays2[j];
+                    
+                    		arrays2[j] = aux;
+               	 		}
+            		}
+
+        		break;
+        		
+ 
+        		case 3:
+
+
+        			for (i = 0; i < arrays3.length - 1; i++) {
+
+           	 			for (j = 0; j < arrays3.length - i - 1; j++) {
+
+                			if (arrays3[j + 1] < arrays3[j]) {
+
+                   	 			aux = arrays3[j + 1];
+
+                    			arrays3[j + 1] = arrays3[j];
+                    
+                   	 			arrays3[j] = aux;
+               	 			}
+            			}
+        			}
+
+        	}		break;
+
+        		        	       	
 		}
 
 }

@@ -24,7 +24,7 @@ import java.util.Scanner;
 		//-------------SUB MENU D-----------------//
 
 		public final static int SUM = 13;
-		public final static int SUUBTRACTION = 14;
+		public final static int SUSBTRACTION = 14;
 		public final static int MULTIPLY = 15;
 
 		//-------------------------------------------//
@@ -203,12 +203,25 @@ import java.util.Scanner;
 						desSubMenuD();
 						opt = scan.nextInt();
 						
-						System.out.println("mi opt es:" + opt + " y mi sum es :" + SUM);
 						if(opt==SUM){
-							
-							sum();	
+
+							sum_arrays();	
+
+						}else if(opt==SUSBTRACTION){
+
+
+						}else if(opt==MULTIPLY){
+
+							multiply_arrays();
+
+						}else{
+
+							System.out.println("la opcion es invalida");
 						}
 						
+					}else{
+
+						System.out.println("la opcion es invalida");
 					}
 					
 					System.out.println("Finished");	
@@ -416,36 +429,28 @@ import java.util.Scanner;
 			return elMayor;
 			
 		}
-		//------------------------------------------------------------------SUB MENU CA--------------------------------------------------------------//
+		//------------------------------------------------------------------SUB MENU D----------------------------------------------------//
 
-		public static void sum(){
+		//Metodo que me realiza la suma de dos arreglos escogidos por el usuario
+		public static void sum_arrays(){
 			
-			System.out.println("entro al metodo");
-			
+
 			int[] sumArrays;
 			int[][] array = {arrays1,arrays2,arrays3};
 			
 			System.out.println("seleccione el primer arreglo que desea sumar");
 			int opt1 = scan.nextInt()-1;
-			
-			System.out.println(opt1);
+		
 			System.out.println("seleccione el segundo arreglo que desea sumar");
 			int opt2 = scan.nextInt()-1;			
-			System.out.println(opt2);
+			
 			if(array[opt1].length==array[opt2].length){
-				
-				System.out.println("entro al metodo");
 				
 				sumArrays = new int[array[opt1].length];
 				
-				System.out.println("entro al metodo");
-				
-				for(int i=0; i<array.length ; i++){
-					
-					System.out.println("entro al metodo");
+				for(int i=0; i<array[opt1].length ; i++){
 					
 					sumArrays[i] = array[opt1][i] + array[opt2][i];
-					
 					System.out.println(sumArrays[i]);
 				}
 				
@@ -454,11 +459,84 @@ import java.util.Scanner;
 				System.out.println("los dos arreglos no tienen elmismo tamaño");
 			}
 			
-			
-			//return sumArrays;
-			
+		}
+		//------------------------------------------------------------------------------------------------------------------------------------------------//
+		//Metodo de la resta de arreglos
+		public static void susbtraction_arrays(){
 
+			int[] sumArrays;
+			int[][] array = {arrays1,arrays2,arrays3};
+
+			System.out.println("seleccione el primer arreglo que desea sumar");
+			int opt1 = scan.nextInt()-1;
+		
+			System.out.println("seleccione el segundo arreglo que desea sumar");
+			int opt2 = scan.nextInt()-1;			
 			
+			if(array[opt1].length==array[opt2].length){
+				
+				sumArrays= new int[array[opt1].length];
+				
+				for(int i=0; i<array[opt1].length ; i++){
+					
+					sumArrays[i] = (array[opt1][i] * array[opt2][i]);
+					System.out.println(sumArrays[i]);
+				}
+				
+			}else{
+				
+				System.out.println("los dos arreglos no tienen elmismo tamaño");
+			}	
+
+		//---------------------------------------------------------------MULTIPLIICACION------------------------------------------------------------------//
+
+		//Metodo que me realiza la operacion de la multiplicacion de dos arreglos escogidos por elusuario
+
+		public static void multiply_arrays(){
+
+			int[] sumArrays;
+			int[][] array = {arrays1,arrays2,arrays3};
+
+			System.out.println("seleccione el primer arreglo que desea sumar");
+			int opt1 = scan.nextInt()-1;
+		
+			System.out.println("seleccione el segundo arreglo que desea sumar");
+			int opt2 = scan.nextInt()-1;			
+			
+			if(array[opt1].length==array[opt2].length){
+				
+				sumArrays= new int[array[opt1].length];
+				
+				for(int i=0; i<array[opt1].length ; i++){
+					
+					sumArrays[i] = (array[opt1][i] * array[opt2][i]);
+					System.out.println(sumArrays[i]);
+				}
+				
+			}else{
+				
+				System.out.println("los dos arreglos no tienen elmismo tamaño");
+			}
+		}	
+
+		//Metodo que genera un nuevo arreglo con los tres arreglos ingresado y sus numeros repetidos
+
+		public static void arraysJoined(){
+
+			int[] arrayJoined = new int[arrays1.length+arrays2.length+arrays3.length];
+
+			for(int i=0; i<arrays1.length; i++){
+
+				arrayJoined[i] = arrays1[i];
+				arrayJoined[arrays2.length+i] = arrays2[i];
+				arrayJoined[arrays2.length+arrays3.length+i] = arrays3[i];
+			}
+
+			for(int i= 0; i<arrayJoined.length; i++ ){
+
+				System.out.println(arrayJoined[i]);
+
+			}
 		}
 	
 	}
